@@ -12,7 +12,7 @@ alumno3=Alumno('Diego',1,'Matemática')
 nota1=Notas('Juan')
 nota2=Notas('Pedro')
 nota3=Notas('Diego')"""
-
+#PRUEBA DE Q SE ACTUALIZO EL GITHUB
 print("Ingrese los alumnos: \n")
 seccion1.agregar_alumno(info_alumnos,'Matemática',1)
 #info_alumnos=[[],[],[]] → [[alumnos],[notas],[nota final]]
