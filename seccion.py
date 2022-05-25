@@ -4,6 +4,9 @@
 info_alumnos=[[],[],[]]#[[alumnos],[notas],[nota final]]
 notas_max_min=[[]]#[alumno][1]→ nota menor,[alumno][0]→ nota mayor .Lista de la mejor/menor nota de cada alumno
 notas_min_pc=[]#la pc mas baja de cada alumno
+
+print("3 CAMBIO EN GITHUB")
+
 class Seccion:
     def __init__(self,nseccion,curso,profesor):
         self.nseccion=nseccion
