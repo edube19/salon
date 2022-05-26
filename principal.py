@@ -14,25 +14,13 @@ seccion1.inicializar_notas(1)#1 para inicializar la columna de notas
 seccion1.inicializar_notas(2)#2 para inicializar la columna de nota final
 seccion1.inicializar_notas_min_pc(notas_min_pc)#inicializa la nota mas baja de todas
 
-seccion1.recibir_notas(info_alumnos,total_alumnos)
+c=1
 
-
-"""while (c!=0 and n!=total_alumnos):#Ingresar notas de los alumnos
-    nalumno=input("Ingresar notas del alumno ")
-    pc1=int(input("PC 1: "))
-    pc2=int(input("PC 2: "))
-    pc3=int(input("PC 3: "))
-    pc4=int(input("PC 4: "))
-    parcial=int(input("Parcial: "))
-    final=int(input("Final: "))
-    seccion1.ingresar_notas(nalumno,pc1,pc2,pc3,pc4,parcial,final)
-    seccion1.ver_notas(info_alumnos,nalumno)
-    n=n+1
-    condicion=int(input("Notas ingresadas. ¿Ingresar otro? (1→SI / 0→NO) "))
-    if (n==total_alumnos):
-        c=0
-    else:
-        c=condicion"""
+while (c!=0):
+    alumno=input("Ingrese el nombre del alumno a asignar notas: ")
+    seccion1.recibir_notas(info_alumnos,alumno)
+    condicion=int(input(" ¿Ingresar otro? (1→SI / 0→NO) "))
+    c=condicion
 #nalumno=input("Ver notas del alumno: ")
 #seccion1.ver_notas(info_alumnos,nalumno)
 

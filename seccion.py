@@ -1,6 +1,7 @@
 #creando la sección de clases
 
 #arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+from asyncio.windows_events import NULL
 from distutils.log import info
 
 
@@ -112,41 +113,42 @@ class Seccion:
         print(menor2+" del alumno "+info_alumnos[0][mn2])
         print(menor+" del alumno "+info_alumnos[0][j]) 
 
-    def recibir_notas(self,info_alumnos,total_alumnos):
+    def recibir_notas(self,info_alumnos,alumno):
         notas=[]#aca se guardaran las notas
         notascero=[]#solo para inicializar las notas
         for j in range(6):
             notas.append(notascero)
-        print("#####################")
-        print(len(notas))
-        print(info_alumnos[1])
         # print(notas)
-        for i in range(total_alumnos):
-            print('notas INICIALES DEL ALUMNO'+info_alumnos[0][i].nombre+": "+ str(notas))
-            print("Ingresar notas del alumno "+info_alumnos[0][i].nombre+": ")
-            notas[0]=int(input("PC 1: "))
-            info_alumnos[1][i].append(notas[0])
-            
-            notas[1]=int(input("PC 2: "))
-            info_alumnos[1][i].append(notas[1])
-            notas[2]=int(input("PC 3: "))
-            info_alumnos[1][i].append(notas[2])
-            notas[3]=int(input("PC 4: "))
-            info_alumnos[1][i].append(notas[3])
-            notas[4]=int(input("Parcial: "))
-            info_alumnos[1][i].append(notas[4])
-            notas[5]=int(input("Final: "))
-            info_alumnos[1][i].append(notas[5])
-            print(notas)
+        busqueda=0
+        for x in range(len(info_alumnos[0])):
+            if alumno==info_alumnos[0][x].nombre:
+                print("Ingresar notas del alumno "+info_alumnos[0][x].nombre+": ")    
+                for k in range(6):
+                    if k<4:
+                        notas[k]=int(input(f'PC{str(k+1)}: '))
+                        info_alumnos[1][x].append(notas[k])
+                    elif k==4:
+                        notas[k]=int(input("Parcial: "))
+                        info_alumnos[1][x].append(notas[k])
+                    else:
+                        notas[k]=int(input("Final: "))
+                        info_alumnos[1][x].append(notas[k])
+                print(notas)
+                break
+            else:
+                busqueda=x+1
+        if busqueda==len(info_alumnos[0]):
+            print("El alumno no existe")
+        else:
+            print("Se recibieron las notas")
             # info_alumnos[1][i].append(notas)
-            print('INFO ALUMNOS ',info_alumnos[1])
             #info_alumnos[1][i]=notas
-            print(info_alumnos[1][i])
-            print(info_alumnos[1][0])
+            #print(info_alumnos[1][i])
+            #print(info_alumnos[1][0])
             """del notas[0:]#borramos la informacion
             for j in range(6):
                 notas.append(notascero)"""
-        print("Se recibieron las notas")
+        
 
     def ingresar_notas(self,nalumno,notas):
         
@@ -182,75 +184,41 @@ class Seccion:
         for j in range(len(info_alumnos[0])):
             notas=[]
             info_alumnos[columna].append(notas)
-            if (columna==1):
-                print("Se inicializo las notas de las pcs del alumno "+str(j+1))  
-                print(info_alumnos[columna][j])
-            else:
-                print("Se inicializo la nota final del alumno "+str(j+1))  
-                print(info_alumnos[columna][j])
 
     def inicializar_notas_min_pc(self,notas_min_pc):
 
         for j in range(len(info_alumnos[0])):
                 notas=[]
                 notas_min_pc.append(notas)
-                print("Se inicializo la nota mas baja del alumno "+str(j+1))
 
 
     def promedio_alumnos(self,info_alumnos,notas_min_pc):
         #minimo=min(info_alumnos)
         #menor=20
         min_valor=[]
-
+        vacio=[]
         for i in range(len(info_alumnos[0])):
-            for j in range(4):#lee las 4 primeras notas
-                a=info_alumnos[1][i][j]
-                min_valor.append(a)
-                print(min_valor[j])
-            print("las 4 pcs")
-            print(min_valor)
-            menor=min(min_valor)
-            print("ffffffffffffffff")
-            print(menor)
-            notas_min_pc[i]=menor
-            print(notas_min_pc[i])
-            print(notas_min_pc)
-            min_valor=[]
-        """notapcs=0
-        #eliminando y guardando la pc más baja de cada alumno
-        menor=20 #es tipo int o entero
-
-        for x in range(len(info_alumnos[1])):
-            for j in range(4):
-                a=int(info_alumnos[1][x][j])#a es entero o int
-                print("-----------------------------------------------------------")
-                print(a)
-                print(type(a))
-
-                if a<menor:#if int(info_alumnos[1][x][j])<menor:
-                    
-                    print("=================================================")
-                    print(notas_min_pc[x])
-                    menor=notas_min_pc[x]#aca se convierte en lista, menor es tipo lista
-                    print(menor)
-                    print("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-                    print(type(menor))
-                    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")              
-            notas_min_pc[x] = menor  #guardando la nota mas baja de cada alumno
-            menor=20 """
+            if info_alumnos[1][i]!=vacio:
+                for j in range(4):#lee las 4 primeras notas
+                    a=info_alumnos[1][i][j]
+                    min_valor.append(a)
+                menor=min(min_valor)
+                notas_min_pc[i]=menor
+                min_valor=[]
+        
         #poniendo las notas finales de cada alumno
         notapcs=0
-        for x in range(len(info_alumnos[1])):  
-            for j in range(4):
-                if info_alumnos[1][x][j]==notas_min_pc[x]:#no lee la nota menor
-                    notapcs=notapcs
-                else:
-                    notapcs=info_alumnos[1][x][j]+notapcs
-                print (notapcs)
-            notapcs=notapcs/3
-            info_alumnos[2][x]=(notapcs+info_alumnos[1][x][4]+info_alumnos[1][x][5])/3#alumnos[1][x][4]→parcial, alumnos[1][x][5]→final
-            print("Promedio final del alumno "+str(info_alumnos[0][x].nombre)+" es: "+str(info_alumnos[2][x]))
-            notapcs=0
+        for x in range(len(info_alumnos[0])):  
+            if info_alumnos[1][x]!=vacio:
+                for j in range(4):
+                    if info_alumnos[1][x][j]==notas_min_pc[x]:#no lee la nota menor
+                        notapcs=notapcs
+                    else:
+                        notapcs=info_alumnos[1][x][j]+notapcs
+                notapcs=notapcs/3
+                info_alumnos[2][x]=(notapcs+info_alumnos[1][x][4]+info_alumnos[1][x][5])/3#alumnos[1][x][4]→parcial, alumnos[1][x][5]→final
+                print("Promedio final del alumno "+str(info_alumnos[0][x].nombre)+" es: "+str(info_alumnos[2][x]))
+                notapcs=0
 
 class Alumno:
     def __init__(self,nombre,nseccion,curso):
