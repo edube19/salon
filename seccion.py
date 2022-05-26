@@ -1,11 +1,12 @@
 #creando la sección de clases
 
 #arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+from distutils.log import info
+
+
 info_alumnos=[[],[],[]]#[[alumnos],[notas],[nota final]]
 notas_max_min=[[]]#[alumno][1]→ nota menor,[alumno][0]→ nota mayor .Lista de la mejor/menor nota de cada alumno
 notas_min_pc=[]#la pc mas baja de cada alumno
-notas=[]
-print("3 CAMBIO EN GITHUB")
 
 class Seccion:
     def __init__(self,nseccion,curso,profesor):
@@ -112,31 +113,53 @@ class Seccion:
         print(menor+" del alumno "+info_alumnos[0][j]) 
 
     def recibir_notas(self,info_alumnos,total_alumnos):
-        notas=[]
+        notas=[]#aca se guardaran las notas
+        notascero=[]#solo para inicializar las notas
+        for j in range(6):
+            notas.append(notascero)
+        print("#####################")
+        print(len(notas))
+        print(info_alumnos[1])
+        # print(notas)
         for i in range(total_alumnos):
+            print('notas INICIALES DEL ALUMNO'+info_alumnos[0][i].nombre+": "+ str(notas))
             print("Ingresar notas del alumno "+info_alumnos[0][i].nombre+": ")
             notas[0]=int(input("PC 1: "))
+            info_alumnos[1][i].append(notas[0])
+            
             notas[1]=int(input("PC 2: "))
+            info_alumnos[1][i].append(notas[1])
             notas[2]=int(input("PC 3: "))
+            info_alumnos[1][i].append(notas[2])
             notas[3]=int(input("PC 4: "))
+            info_alumnos[1][i].append(notas[3])
             notas[4]=int(input("Parcial: "))
+            info_alumnos[1][i].append(notas[4])
             notas[5]=int(input("Final: "))
-            del notas[0:]#borramos la informacion
+            info_alumnos[1][i].append(notas[5])
+            print(notas)
+            # info_alumnos[1][i].append(notas)
+            print('INFO ALUMNOS ',info_alumnos[1])
+            #info_alumnos[1][i]=notas
+            print(info_alumnos[1][i])
+            print(info_alumnos[1][0])
+            """del notas[0:]#borramos la informacion
+            for j in range(6):
+                notas.append(notascero)"""
         print("Se recibieron las notas")
-    
-    def ingresar_notas(self,nalumno,pc1,pc2,pc3,pc4,parcial,final):
+
+    def ingresar_notas(self,nalumno,notas):
         
         for j in range(len(info_alumnos[0])):
             if nalumno==info_alumnos[0][j].nombre:
                 print(info_alumnos[0][j].nombre)
-                notas=[pc1,pc2,pc3,pc4,parcial,final]
+                #notas=[pc1,pc2,pc3,pc4,parcial,final]
                 print(notas)
                     #print(i)
                     #print(notas[i])
                 #info_alumnos[1][j].append(notas[i])
                 print(info_alumnos[1][j])
                 info_alumnos[1][j]=notas
-
                 print(str(info_alumnos[0][j].nombre))
                 break
             elif (j==(len(info_alumnos[0])-1)):
@@ -178,17 +201,10 @@ class Seccion:
         #minimo=min(info_alumnos)
         #menor=20
         min_valor=[]
-        """"
-        for j in range(len(info_alumnos[0])):
-                a=0
-                min_valor.append(a)
-        #min_valor.pop(0)
-        print(min_valor)"""
+
         for i in range(len(info_alumnos[0])):
             for j in range(4):#lee las 4 primeras notas
-                print("ttttttttttttttttttttt")
                 a=info_alumnos[1][i][j]
-                print(a)
                 min_valor.append(a)
                 print(min_valor[j])
             print("las 4 pcs")
