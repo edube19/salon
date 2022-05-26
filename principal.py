@@ -27,3 +27,5 @@ while (c!=0):
 seccion1.ver_notas_seccion(info_alumnos,1)
 
 seccion1.promedio_alumnos(info_alumnos,notas_min_pc)
+seccion1.mayor_nota(info_alumnos)
+seccion1.menor_nota(info_alumnos)

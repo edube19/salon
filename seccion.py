@@ -3,6 +3,7 @@
 #arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
 from asyncio.windows_events import NULL
 from distutils.log import info
+import string
 
 
 info_alumnos=[[],[],[]]#[[alumnos],[notas],[nota final]]
@@ -55,63 +56,23 @@ class Seccion:
         return len(info_alumnos[0])
 
     def mayor_nota(self,info_alumnos):
-        print("Mayor nota de la seccion")
-        mayor=0
-        for i in range(len(info_alumnos[2])):
-            if info_alumnos[2][i]>mayor:
-                mayor=info_alumnos[2][i]
-                notas_max_min[0][i]=mayor
-                j=i#guardamos la posicion del alumno con la mas alta nota
-        print(mayor+" del alumno "+info_alumnos[0][j])
-
-        print("Tres notas más altas de la seccion")
-        mayor2=0
-        for i in range(len(info_alumnos[2])):
-            if (info_alumnos[2][i]>mayor2 and info_alumnos[2][i]<mayor):
-                mayor2=info_alumnos[2][i]
-                notas_max_min[0][i]=mayor2
-                my2=i#guardamos la posicion del alumno con la mas alta nota
-        
-        mayor3=0
-        for i in range(len(info_alumnos[2])):
-            if (info_alumnos[2][i]>mayor3 and info_alumnos[2][i]<mayor and info_alumnos[2][i]<mayor2):
-                mayor3=info_alumnos[2][i]
-                notas_max_min[0][i]=mayor3
-                my3=i#guardamos la posicion del alumno con la mas alta nota
-        
-        print(mayor+" del alumno "+info_alumnos[0][j])
-        print(mayor2+" del alumno "+info_alumnos[0][my2])
-        print(mayor3+" del alumno "+info_alumnos[0][my3])
-
+        vacio=[]
+        max_value = None
+        max_idx = None
+        for idx, num in enumerate(info_alumnos[2]):
+            if ((max_value is None or num > max_value) and info_alumnos[2][idx]!=vacio):
+                max_value = num
+                max_idx = idx
+        print('La Maxima nota es: ', str(max_value), "del alumno: ", str(info_alumnos[0][max_idx].nombre))
     def menor_nota(self,info_alumnos):
-        print("Menor nota de la seccion")
-        menor=20
-        for i in range(len(info_alumnos[2])):
-            if info_alumnos[2][i]<menor:
-                menor=info_alumnos[2][i]
-                notas_max_min[1][i]=menor
-                j=i#guardamos la posicon del alumno con la mas baja nota
-        print(menor+" del alumno "+info_alumnos[0][j])
-        
-        print("Tres notas más altas de la seccion")
-        menor2=20
-        menor3=20
-
-        for i in range(len(info_alumnos[2])):
-            if (info_alumnos[2][i]<menor2 and info_alumnos[2][i]>menor):
-                menor2=info_alumnos[2][i]
-                notas_max_min[1][i]=menor2
-                mn2=i#guardamos la posicion del alumno con la mas alta nota
-
-        for i in range(len(info_alumnos[2])):
-            if (info_alumnos[2][i]<menor3 and info_alumnos[2][i]>menor and info_alumnos[2][i]>menor2):
-                menor3=info_alumnos[2][i]
-                notas_max_min[1][i]=menor3
-                mn3=i#guardamos la posicion del alumno con la mas alta nota
-
-        print(menor3+" del alumno "+info_alumnos[0][mn3])
-        print(menor2+" del alumno "+info_alumnos[0][mn2])
-        print(menor+" del alumno "+info_alumnos[0][j]) 
+        vacio=[]
+        min_value = 20
+        min_idx = None
+        for idx, num in enumerate(info_alumnos[2]):
+            if ((min_value is 20 or num < min_value) and info_alumnos[2][idx]!=vacio):
+                min_value = num
+                min_idx = idx
+        print('La menor nota es: ', str(min_value), "del alumno: ", str(info_alumnos[0][min_idx].nombre))
 
     def recibir_notas(self,info_alumnos,alumno):
         notas=[]#aca se guardaran las notas
