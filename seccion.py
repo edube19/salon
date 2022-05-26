@@ -4,7 +4,7 @@
 info_alumnos=[[],[],[]]#[[alumnos],[notas],[nota final]]
 notas_max_min=[[]]#[alumno][1]→ nota menor,[alumno][0]→ nota mayor .Lista de la mejor/menor nota de cada alumno
 notas_min_pc=[]#la pc mas baja de cada alumno
-
+notas=[]
 print("3 CAMBIO EN GITHUB")
 
 class Seccion:
@@ -26,14 +26,10 @@ class Seccion:
                 info_alumnos[0].append(nalumno)#poner al final en la lista de alumnos
                 info_alumnos[0][n]= Alumno(nalumno,nseccion,curso)
                 #info_alumnos[1].append(nalumno)
-                #info_alumnos[1][n]= Notas(nalumno)
-                #info_alumnos[1][n]= Notas(nalumno)
                 print("Se agrego al alumno: "+nalumno)
             n=n+1
             cond=input("Desea agregar otro alumno (1→SI / 0→NO):")
             cond=int(cond)
-            """if cond==0:
-                break"""
  
     def quitar_alumno(self,info_alumnos):
         cond=1
@@ -55,6 +51,7 @@ class Seccion:
             print("Alumno n° "+str(i)+" : "+str(info_alumnos[0][x].nombre))
             i=i+1
         return len(info_alumnos[0])
+
     def mayor_nota(self,info_alumnos):
         print("Mayor nota de la seccion")
         mayor=0
@@ -114,8 +111,19 @@ class Seccion:
         print(menor2+" del alumno "+info_alumnos[0][mn2])
         print(menor+" del alumno "+info_alumnos[0][j]) 
 
+    def recibir_notas(self,info_alumnos,total_alumnos):
+        notas=[]
+        for i in range(total_alumnos):
+            print("Ingresar notas del alumno "+info_alumnos[0][i].nombre+": ")
+            notas[0]=int(input("PC 1: "))
+            notas[1]=int(input("PC 2: "))
+            notas[2]=int(input("PC 3: "))
+            notas[3]=int(input("PC 4: "))
+            notas[4]=int(input("Parcial: "))
+            notas[5]=int(input("Final: "))
+            del notas[0:]#borramos la informacion
+        print("Se recibieron las notas")
     
-
     def ingresar_notas(self,nalumno,pc1,pc2,pc3,pc4,parcial,final):
         
         for j in range(len(info_alumnos[0])):

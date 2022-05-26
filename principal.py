@@ -1,21 +1,11 @@
 from uuid import NAMESPACE_URL
 from seccion import *
-import numpy as np
 
 
 seccion1=Seccion(1,'Matemática','Echendia')
 
-"""alumno1=Alumno('Juan',1,'Matemática')
-alumno2=Alumno('Pedro',1,'Matemática')
-alumno3=Alumno('Diego',1,'Matemática')
-
-nota1=Notas('Juan')
-nota2=Notas('Pedro')
-nota3=Notas('Diego')"""
-#PRUEBA DE Q SE ACTUALIZO EL GITHUB
 print("Ingrese los alumnos: \n")
 seccion1.agregar_alumno(info_alumnos,'Matemática',1)
-#info_alumnos=[[],[],[]] → [[alumnos],[notas],[nota final]]
 
 total_alumnos=seccion1.ver_lista(info_alumnos,1)
 print(total_alumnos)
@@ -24,6 +14,11 @@ n=0
 seccion1.inicializar_notas(1)#1 para inicializar la columna de notas
 seccion1.inicializar_notas(2)#2 para inicializar la columna de nota final
 seccion1.inicializar_notas_min_pc(notas_min_pc)#inicializa la nota mas baja de todas
+
+#for i in range(total_alumnos):
+
+
+
 while (c!=0 and n!=total_alumnos):#Ingresar notas de los alumnos
     nalumno=input("Ingresar notas del alumno ")
     pc1=int(input("PC 1: "))
