@@ -18,11 +18,13 @@ class Seccion:
         self.curso=curso
         self.profesor=profesor
         self.info_alumnos=[[],[],[]]#para que pertenesca a este
+        self.notas_min_pc=[]
         #self.info_alumnos=info_alumnos
     #lista_alumnos=[]
         
 
     def agregar_alumno(self,info_alumnos,curso,nseccion):
+        print("Seccion ",nseccion)
         lista_nombres=[]#guarda los nombres de todos los alumnos
         cond=1
         while(cond!=0):
