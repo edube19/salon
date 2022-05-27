@@ -3,7 +3,7 @@
 #arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
 from asyncio.windows_events import NULL
 from distutils.log import info
-import string
+
 
 
 info_alumnos=[[],[],[]]#[[alumnos],[notas],[nota final],[identificador_alumno]]
@@ -20,7 +20,13 @@ class Seccion:
     def agregar_alumno(self,info_alumnos,curso,nseccion):
         cond=1
         while(cond!=0):
-            nombreAlumno=input("Nombre del alumno a ingresar: ")
+            nombre_valido=0
+            while(nombre_valido==0):
+                nombreAlumno=input("Nombre del alumno a ingresar: ")
+                if nombreAlumno.isalpha():
+                    nombre_valido=1
+                else:
+                    print("Ingrese solo nombres")
             if nombreAlumno in lista_nombres:
                 print("Ya existe este alumno")
             else:
@@ -83,9 +89,9 @@ class Seccion:
                     max_value2 = num
                     max_idx2 = idx
         print("Las tres mejores notas son: ")
-        print("3 mejor nota es: "+str(max_value2)+"del alumno: "+str(info_alumnos[0][max_idx2].nombre))
-        print("2 mejor nota es: "+str(max_value1)+"del alumno: "+str(info_alumnos[0][max_idx1].nombre))
-        print("La mejor nota es : "+str(max_value)+"del alumno: "+str(info_alumnos[0][max_idx].nombre))
+        print("3 mejor nota es: "+str(max_value2)+" del alumno: "+str(info_alumnos[0][max_idx2].nombre))
+        print("2 mejor nota es: "+str(max_value1)+" del alumno: "+str(info_alumnos[0][max_idx1].nombre))
+        print("La mejor nota es: "+str(max_value)+" del alumno: "+str(info_alumnos[0][max_idx].nombre))
 
     def menor_nota(self,info_alumnos):   
         vacio=[]
@@ -105,27 +111,6 @@ class Seccion:
         for j in range(6):
             notas.append(notascero)
         # print(notas)
-        """for x in range(len(info_alumnos[0])):
-            if alumno in info_alumnos[0][x].nombre:
-                if(info_alumnos[1][x]==vacio):
-                    print("Ingresar notas del alumno "+info_alumnos[0][x].nombre+": ")    
-                    for k in range(6):
-                        if k<4:
-                            notas[k]=int(input(f'PC{str(k+1)}: '))
-                            info_alumnos[1][x].append(notas[k])
-                        elif k==4:
-                            notas[k]=int(input("Parcial: "))
-                            info_alumnos[1][x].append(notas[k])
-                        else:
-                            notas[k]=int(input("Final: "))
-                            info_alumnos[1][x].append(notas[k])
-                    print(notas)
-                else:
-                    print("Las notas del alumno "+alumno+" ya fueron ingresadas")
-                    print(info_alumnos[1][x])  
-                
-            else:
-                print("El alumno no existe")"""
         while (contador!=len(info_alumnos[0])):
             if alumno in info_alumnos[0][contador].nombre:
                 if(info_alumnos[1][contador]==vacio):
