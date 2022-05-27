@@ -19,34 +19,23 @@ class Seccion:
 
     def agregar_alumno(self,info_alumnos,curso,nseccion):
         cond=1
-        n=0
         while(cond!=0):
-            nalumno=input("Nombre del alumno a ingresar: ")
-            #print(n)
-            #lista_nombres.append(nalumno)
-            #print(lista_nombres) 
-            #poner al final en la lista de alumnos
-            #info_alumnos[0][n]= Alumno(nalumno,nseccion,curso)
-            
-            if nalumno in lista_nombres:
+            nombreAlumno=input("Nombre del alumno a ingresar: ")
+            if nombreAlumno in lista_nombres:
                 print("Ya existe este alumno")
             else:
-                lista_nombres.append(nalumno)
-                info_alumnos[0].append(nalumno)#poner al final en la lista de alumnos
-                info_alumnos[0][n]= Alumno(nalumno,nseccion,curso)
-                print("Se agrego al alumno: "+nalumno)
-            n=n+1
-            cond=input("Desea agregar otro alumno (1→SI / 0→NO):")
-            cond=int(cond)
-
+                lista_nombres.append(nombreAlumno)
+                info_alumnos[0].append(Alumno(nombreAlumno,nseccion,curso))#poner al final en la lista de alumnos
+                print("Se agrego al alumno: "+nombreAlumno)
+            cond=int(input("Desea agregar otro alumno (1→SI / 0→NO):"))
 
     def quitar_alumno(self,info_alumnos):
         cond=1
         while(cond!=0):
-            nalumno=input("Nombre del alumno a eliminar: ")
-            if nalumno in info_alumnos[0]:
-                info_alumnos[0].remove(nalumno)
-                print("Se elimino al alumno: "+nalumno)
+            nombreAlumno=input("Nombre del alumno a eliminar: ")
+            if nombreAlumno in info_alumnos[0]:
+                info_alumnos[0].remove(nombreAlumno)
+                print("Se elimino al alumno: "+nombreAlumno)
             else:
                 print("Ya no existe ese alumno")
             cond=input("Desea eiminar otro alumno (1→SI / 0→NO):")
@@ -55,10 +44,8 @@ class Seccion:
 
     def ver_lista(self,info_alumnos,nseccion):
         print("Lista de alumnos de la seccion "+str(nseccion)+": ")
-        i=1
         for x in range(len(info_alumnos[0])):
-            print("Alumno n° "+str(i)+" : "+str(info_alumnos[0][x].nombre))
-            i=i+1
+            print("Alumno n° "+str(x+1)+" : "+info_alumnos[0][x].nombre)
         return len(info_alumnos[0])
 
     def mayor_nota(self,info_alumnos):
@@ -114,38 +101,39 @@ class Seccion:
         min_idx = None
         for idx, num in enumerate(info_alumnos[2]):
             if (info_alumnos[2][idx]!=vacio):
-                if (min_value is 20 or num < min_value ):
+                if (min_value == 20 or num < min_value ):
                     min_value = num
                     min_idx = idx
         print('La menor nota es: ', str(min_value), "del alumno: ", str(info_alumnos[0][min_idx].nombre))
     def recibir_notas(self,info_alumnos,alumno):
         notas=[]#aca se guardaran las notas
+        vacio=[]
         notascero=[]#solo para inicializar las notas
         for j in range(6):
             notas.append(notascero)
         # print(notas)
-        busqueda=0
         for x in range(len(info_alumnos[0])):
-            if alumno not in info_alumnos[0][x].nombre:
-                print("Ingresar notas del alumno "+info_alumnos[0][x].nombre+": ")    
-                for k in range(6):
-                    if k<4:
-                        notas[k]=int(input(f'PC{str(k+1)}: '))
-                        info_alumnos[1][x].append(notas[k])
-                    elif k==4:
-                        notas[k]=int(input("Parcial: "))
-                        info_alumnos[1][x].append(notas[k])
-                    else:
-                        notas[k]=int(input("Final: "))
-                        info_alumnos[1][x].append(notas[k])
-                print(notas)
-                break
+            if alumno == info_alumnos[0][x].nombre:
+                if(info_alumnos[1][x]==vacio):
+                    print("Ingresar notas del alumno "+info_alumnos[0][x].nombre+": ")    
+                    for k in range(6):
+                        if k<4:
+                            notas[k]=int(input(f'PC{str(k+1)}: '))
+                            info_alumnos[1][x].append(notas[k])
+                        elif k==4:
+                            notas[k]=int(input("Parcial: "))
+                            info_alumnos[1][x].append(notas[k])
+                        else:
+                            notas[k]=int(input("Final: "))
+                            info_alumnos[1][x].append(notas[k])
+                    print(notas)
+                    break
+                else:
+                    print("Las notas del alumno "+alumno+" ya fueron ingresadas")
+                    print(info_alumnos[1][x])
+                    break   
             else:
-                busqueda=x+1
-        if busqueda==len(info_alumnos[0]):
-            print("El alumno no existe")
-        else:
-            print("Se recibieron las notas")
+                print("El alumno no existe")
 
     def ver_notas(self,info_alumnos,nombre):
         for j in range(len(info_alumnos[0])):
@@ -208,8 +196,8 @@ class Alumno:
 
 
 class Notas:
-    #info_alumnos[0][n]= Alumno(nalumno,nseccion,curso)
-    #info_alumnos[1][n]= Alumno(nalumno,nseccion,curso)
+    #info_alumnos[0][n]= Alumno(nombreAlumno,nseccion,curso)
+    #info_alumnos[1][n]= Alumno(nombreAlumno,nseccion,curso)
     def __init__(self,alumno):
         self.alumno=alumno
     
