@@ -6,18 +6,24 @@ from distutils.log import info
 
 
 
-info_alumnos=[[],[],[]]#[[alumnos],[notas],[nota final],[identificador_alumno]]
-notas_max_min=[[]]#[alumno][1]→ nota menor,[alumno][0]→ nota mayor .Lista de la mejor/menor nota de cada alumno
-notas_min_pc=[]#la pc mas baja de cada alumno
-lista_nombres=[]#guarda los nombres de todos los alumnos
+
+
 class Seccion:
+    #[[alumnos],[notas],[nota final],[identificador_alumno]]
+    notas_max_min=[[]]#[alumno][1]→ nota menor,[alumno][0]→ nota mayor .Lista de la mejor/menor nota de cada alumno
+    notas_min_pc=[]#la pc mas baja de cada alumno
+    
     def __init__(self,nseccion,curso,profesor):
         self.nseccion=nseccion
         self.curso=curso
         self.profesor=profesor
+        self.info_alumnos=[[],[],[]]#para que pertenesca a este
+        #self.info_alumnos=info_alumnos
     #lista_alumnos=[]
+        
 
     def agregar_alumno(self,info_alumnos,curso,nseccion):
+        lista_nombres=[]#guarda los nombres de todos los alumnos
         cond=1
         while(cond!=0):
             nombre_valido=0#si es cero seguira pidiendo el nombre
@@ -168,12 +174,12 @@ class Seccion:
         print("Notas de la sección "+str(seccion))
         print(info_alumnos[1])
 
-    def inicializar_notas(self,columna):    #inicializando las notas para que haya listas vacias en la columna notas (sino marca error)
+    def inicializar_notas(self,columna,info_alumnos):    #inicializando las notas para que haya listas vacias en la columna notas (sino marca error)
         for j in range(len(info_alumnos[0])):
             notas=[]
             info_alumnos[columna].append(notas)
 
-    def inicializar_notas_min_pc(self,notas_min_pc):
+    def inicializar_notas_min_pc(self,notas_min_pc,info_alumnos):
 
         for j in range(len(info_alumnos[0])):
                 notas=[]

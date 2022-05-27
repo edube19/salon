@@ -1,18 +1,26 @@
 from uuid import NAMESPACE_URL
 from seccion import *
-
+#info_alumnos1=[[],[],[]]
+#info_alumnos2=[[],[],[]]
 
 seccion1=Seccion(1,'Matemática','Echendia')
-
+seccion2=Seccion(2,'Fisica','Tafur')
 print("Ingrese los alumnos: \n")
-seccion1.agregar_alumno(info_alumnos,'Matemática',1)
-
-total_alumnos=seccion1.ver_lista(info_alumnos,1)
+seccion1.agregar_alumno(seccion1.info_alumnos,'Matemática',1)
+total_alumnos=seccion1.ver_lista(seccion1.info_alumnos,1)
 print(total_alumnos)
 
-seccion1.inicializar_notas(1)#1 para inicializar la columna de notas
-seccion1.inicializar_notas(2)#2 para inicializar la columna de nota final
-seccion1.inicializar_notas_min_pc(notas_min_pc)#inicializa la nota mas baja de todas
+seccion2.agregar_alumno(seccion2.info_alumnos,'Fisica',2)
+total_alumnos=seccion2.ver_lista(seccion2.info_alumnos,2)
+print(total_alumnos)
+
+total_alumnos=seccion1.ver_lista(seccion1.info_alumnos,1)
+print(total_alumnos)
+
+"""
+seccion1.inicializar_notas(1,info_alumnos1)#1 para inicializar la columna de notas
+seccion1.inicializar_notas(2,info_alumnos1)#2 para inicializar la columna de nota final
+seccion1.inicializar_notas_min_pc(notas_min_pc,info_alumnos1)#inicializa la nota mas baja de todas
 
 c=1
 
@@ -27,8 +35,4 @@ seccion1.ver_notas_seccion(info_alumnos,1)
 
 seccion1.promedio_alumnos(info_alumnos,notas_min_pc)
 seccion1.mayor_nota(info_alumnos)
-seccion1.menor_nota(info_alumnos)
-
-seccion2=Seccion(2,'Matemática','Echendia')
-
-#print(seccion2.ver_lista(info_alumnos,2))
+seccion1.menor_nota(info_alumnos)"""
