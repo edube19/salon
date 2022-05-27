@@ -21,8 +21,7 @@ while (c!=0):
     seccion1.recibir_notas(info_alumnos,alumno)
     condicion=int(input(" ¿Ingresar otro? (1→SI / 0→NO) "))
     c=condicion
-#nalumno=input("Ver notas del alumno: ")
-#seccion1.ver_notas(info_alumnos,nalumno)
+
 
 seccion1.ver_notas_seccion(info_alumnos,1)
 
