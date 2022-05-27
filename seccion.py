@@ -50,11 +50,11 @@ class Seccion:
 
     def mayor_nota(self,info_alumnos):
         vacio=[]
-        max_value = None
-        max_idx = None
+        max_value = 0
+        max_idx = 0
         for idx, num in enumerate(info_alumnos[2]):
             if(info_alumnos[2][idx]!=vacio):
-                if (max_value is None or num > max_value):
+                if (max_value ==0 or num > max_value):
                     max_value = num
                     max_idx = idx
         print('La Maxima nota es: ', str(max_value), "del alumno: ", str(info_alumnos[0][max_idx].nombre))
@@ -64,31 +64,28 @@ class Seccion:
         print("..................")
         print(tres_mejores_notas)
 
-        cond_tres_mejores=input("¿Desea ver las 3 mejores notas? (1→SI / 0→NO)")
+        vacio=[]
+        max_value1 = 0
+        max_idx1 = 0
+        for idx, num in enumerate(info_alumnos[2]):
+            if(info_alumnos[2][idx]!=vacio and info_alumnos[2][idx] not in tres_mejores_notas):
+                if (max_value1 < max_value or num > max_value1 ):
+                    max_value1 = num
+                    max_idx1 = idx
+        tres_mejores_notas.append(max_value1)
 
-        if (cond_tres_mejores==1):
-            vacio=[]
-            max_value1 = 0
-            max_idx1 = None
-            for idx, num in enumerate(info_alumnos[2]):
-                if(info_alumnos[2][idx]!=vacio and info_alumnos[2][idx] not in tres_mejores_notas):
-                    if (max_value1 < max_value or num > max_value1 ):
-                        max_value1 = num
-                        max_idx1 = idx
-            #print('La Maxima nota es: ', str(max_value1), "del alumno: ", str(info_alumnos[0][max_idx1].nombre))
-            tres_mejores_notas.append(max_value1)
-            vacio=[]
-            max_value2 = 0
-            max_idx2 = None
-            for idx, num in enumerate(info_alumnos[2]):
-                if(info_alumnos[2][idx]!=vacio and info_alumnos[2][idx] not in tres_mejores_notas):
-                    if (max_value2 < max_value1 or num > max_value2 ):
-                        max_value2 = num
-                        max_idx2 = idx
-            print("Las tres mejores notas son: ")
-            print("3 mejor nota es: "+str(max_value2)+"del alumno: "+str(info_alumnos[0][max_idx2].nombre))
-            print("2 mejor nota es: "+str(max_value1)+"del alumno: "+str(info_alumnos[0][max_idx1].nombre))
-            print("La mejor nota es : "+str(max_value)+"del alumno: "+str(info_alumnos[0][max_idx].nombre))
+        vacio=[]
+        max_value2 = 0
+        max_idx2 = 0
+        for idx, num in enumerate(info_alumnos[2]):
+            if(info_alumnos[2][idx]!=vacio and info_alumnos[2][idx] not in tres_mejores_notas):
+                if (max_value2 < max_value1 or num > max_value2 ):
+                    max_value2 = num
+                    max_idx2 = idx
+        print("Las tres mejores notas son: ")
+        print("3 mejor nota es: "+str(max_value2)+"del alumno: "+str(info_alumnos[0][max_idx2].nombre))
+        print("2 mejor nota es: "+str(max_value1)+"del alumno: "+str(info_alumnos[0][max_idx1].nombre))
+        print("La mejor nota es : "+str(max_value)+"del alumno: "+str(info_alumnos[0][max_idx].nombre))
 
     def menor_nota(self,info_alumnos):   
         vacio=[]
@@ -103,12 +100,13 @@ class Seccion:
     def recibir_notas(self,info_alumnos,alumno):
         notas=[]#aca se guardaran las notas
         vacio=[]
+        contador=0
         notascero=[]#solo para inicializar las notas
         for j in range(6):
             notas.append(notascero)
         # print(notas)
-        for x in range(len(info_alumnos[0])):
-            if alumno == info_alumnos[0][x].nombre:
+        """for x in range(len(info_alumnos[0])):
+            if alumno in info_alumnos[0][x].nombre:
                 if(info_alumnos[1][x]==vacio):
                     print("Ingresar notas del alumno "+info_alumnos[0][x].nombre+": ")    
                     for k in range(6):
@@ -125,8 +123,33 @@ class Seccion:
                 else:
                     print("Las notas del alumno "+alumno+" ya fueron ingresadas")
                     print(info_alumnos[1][x])  
+                
             else:
-                print("El alumno no existe")
+                print("El alumno no existe")"""
+        while (contador!=len(info_alumnos[0])):
+            if alumno in info_alumnos[0][contador].nombre:
+                if(info_alumnos[1][contador]==vacio):
+                    print("Ingresar notas del alumno "+info_alumnos[0][contador].nombre+": ")    
+                    for k in range(6):
+                        if k<4:
+                            notas[k]=int(input(f'PC{str(k+1)}: '))
+                            info_alumnos[1][contador].append(notas[k])
+                        elif k==4:
+                            notas[k]=int(input("Parcial: "))
+                            info_alumnos[1][contador].append(notas[k])
+                        else:
+                            notas[k]=int(input("Final: "))
+                            info_alumnos[1][contador].append(notas[k])
+                    print(notas)
+                    contador=len(info_alumnos[0])
+                else:
+                    print("Las notas del alumno "+alumno+" ya fueron ingresadas")
+                    print(info_alumnos[1][contador])  
+                    contador=len(info_alumnos[0])
+            else:
+                contador=contador+1
+                if (contador==len(info_alumnos[0])):
+                    print("No existe el alumno")
                 
 
     def ver_notas(self,info_alumnos,nombre):
