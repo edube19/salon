@@ -31,4 +31,4 @@ seccion1.menor_nota(info_alumnos)
 
 seccion2=Seccion(2,'Matemática','Echendia')
 
-print(seccion2.ver_lista(info_alumnos,2))
+#print(seccion2.ver_lista(info_alumnos,2))
