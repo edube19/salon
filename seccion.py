@@ -3,9 +3,7 @@
 #arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
 from asyncio.windows_events import NULL
 from distutils.log import info
-
-
-
+lista_secciones=[]
 
 
 class Seccion:
@@ -13,15 +11,45 @@ class Seccion:
     notas_max_min=[[]]#[alumno][1]→ nota menor,[alumno][0]→ nota mayor .Lista de la mejor/menor nota de cada alumno
     notas_min_pc=[]#la pc mas baja de cada alumno
     
+
     def __init__(self,nseccion,curso,profesor):
         self.nseccion=nseccion
         self.curso=curso
         self.profesor=profesor
         self.info_alumnos=[[],[],[]]#para que pertenesca a este
         self.notas_min_pc=[]
-        #self.info_alumnos=info_alumnos
-    #lista_alumnos=[]
         
+        #self.info_alumnos=info_alumnos
+
+    def crear_seccion(lista_secciones):
+        print("-----Creando secciones-----")
+        cond=0
+        while(cond==0):
+            while True:
+                nseccion=input("Ingrese el nombre/número de la seccion: ")    
+                if (nseccion in lista_secciones):
+                    print("Ya existe esa sección")
+                else:
+                    curso=input("Ingrese el curso de la seccion: ")
+                    profesor=input("Ingrese el profesor de la seccion: ")
+                    lista_secciones.append(Seccion(nseccion,curso,profesor))
+                    print("Seccion creada")
+                    break
+            cond=int(input("Desea agregar otra seccion (1→SI / 0→NO):"))
+
+    def buscar_seccion(lista_secciones):
+        seccion=input("Ponga el nombre/número de la seccion a quedar: ")
+        if seccion in lista_secciones:
+            print("La seccion si existe")
+            print(seccion)
+        else:
+            print("La seccion no existe")
+
+    def ver_secciones(lista_secciones):
+        for lista in lista_secciones:
+            print("")
+            print(lista)   
+            print("")
 
     def agregar_alumno(self,info_alumnos,curso,nseccion):
         print("Seccion ",nseccion)
@@ -128,6 +156,7 @@ class Seccion:
                         if k<4:
                             while(validacion_nota==0):
                                 notas[k]=int(input(f'PC{str(k+1)}: '))
+                               
                                 if notas[k] in range(21):
                                     info_alumnos[1][contador].append(notas[k])
                                     validacion_nota=1
@@ -137,6 +166,7 @@ class Seccion:
                         elif k==4:
                             while(validacion_nota==0):
                                 notas[k]=int(input("Parcial: "))
+                           
                                 if notas[k] in range(21):
                                     info_alumnos[1][contador].append(notas[k])
                                     validacion_nota=1
@@ -146,6 +176,7 @@ class Seccion:
                         else:
                             while(validacion_nota==0):
                                 notas[k]=int(input("Final: "))
+                            
                                 if notas[k] in range(21):
                                     info_alumnos[1][contador].append(notas[k])
                                     validacion_nota=1
@@ -228,6 +259,7 @@ class Notas:
     #info_alumnos[1][n]= Alumno(nombreAlumno,nseccion,curso)
     def __init__(self,alumno):
         self.alumno=alumno
+
     
     
 

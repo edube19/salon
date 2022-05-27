@@ -1,3 +1,6 @@
+from re import X
+
+
 dic = {}
 i=0
 #Agregar Nombre
@@ -9,6 +12,8 @@ while True:
         dic[i] = {}
         nombre = str(input('Nombre: '))
         dic[i]['Nombre'] = nombre
+        opcion_seccion = str(input('Ingrese la seccion del alumno ' + dic[i]['Nombre'] +': '))
+        dic[i]['Seccion'] = opcion_seccion
     else:
         break
 
@@ -35,15 +40,11 @@ for j in dic.keys():
 
 print(dic)
 
-
-
-
-
-
-
-
-
-
+#VER ALUMNOS POR SECCION
+print('\nIMPRIMIENDO ALUMNOS SOLO DE LA SECCION V')
+for l in dic.keys():
+    if dic[l]['Seccion'] == 'V':
+        print(dic[l]['Nombre'])
 
 """ dic['1'] = {}
 dic['1']['Nombre'] = "Angel"

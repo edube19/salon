@@ -1,22 +1,20 @@
+from re import X
 from uuid import NAMESPACE_URL
 from seccion import *
-#info_alumnos1=[[],[],[]]
-#info_alumnos2=[[],[],[]]
+lista_secciones=[]
+
 
 seccion1=Seccion(1,'Matemática','Echendia')
 seccion2=Seccion(2,'Fisica','Tafur')
 print("Ingrese los alumnos: \n")
-seccion1.agregar_alumno(seccion1.info_alumnos,'Matemática',1)
-total_alumnos=seccion1.ver_lista(seccion1.info_alumnos,1)
-print(total_alumnos)
-
-seccion2.agregar_alumno(seccion2.info_alumnos,'Fisica',2)
-total_alumnos=seccion2.ver_lista(seccion2.info_alumnos,2)
-print(total_alumnos)
-
-total_alumnos=seccion1.ver_lista(seccion1.info_alumnos,1)
-print(total_alumnos)
-
+a=seccion1.info_alumnos
+n=1
+seccion1.agregar_alumno(a,'Matemática',n)
+seccion1.ver_lista(a,n)
+seccion=input("Ingrese la seccion a poner nota → Seccion: ")
+m=2
+seccion2.agregar_alumno(seccion2.info_alumnos,'Fisica',m)
+seccion2.ver_lista(seccion2.info_alumnos,m)
 
 seccion1.inicializar_notas(1,seccion1.info_alumnos)#1 para inicializar la columna de notas
 seccion1.inicializar_notas(2,seccion1.info_alumnos)#2 para inicializar la columna de nota final
@@ -25,8 +23,11 @@ seccion1.inicializar_notas_min_pc(seccion1.notas_min_pc,seccion1.info_alumnos)#i
 seccion2.inicializar_notas(1,seccion2.info_alumnos)#1 para inicializar la columna de notas
 seccion2.inicializar_notas(2,seccion2.info_alumnos)#2 para inicializar la columna de nota final
 seccion2.inicializar_notas_min_pc(seccion2.notas_min_pc,seccion2.info_alumnos)#inicializa la nota mas baja de todas
-
 c=1
+
+
+
+
 print("Seccion 1")
 while (c!=0):
     alumno=input("Ingrese el nombre del alumno a asignar notas: ")
