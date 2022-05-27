@@ -20,11 +20,11 @@ class Seccion:
     def agregar_alumno(self,info_alumnos,curso,nseccion):
         cond=1
         while(cond!=0):
-            nombre_valido=0
+            nombre_valido=0#si es cero seguira pidiendo el nombre
             while(nombre_valido==0):
                 nombreAlumno=input("Nombre del alumno a ingresar: ")
                 if nombreAlumno.isalpha():
-                    nombre_valido=1
+                    nombre_valido=1#se ingreso un nombre valido (solo letras)
                 else:
                     print("Ingrese solo nombres")
             if nombreAlumno in lista_nombres:
@@ -107,6 +107,7 @@ class Seccion:
         notas=[]#aca se guardaran las notas
         vacio=[]
         contador=0
+        validacion_nota=0
         notascero=[]#solo para inicializar las notas
         for j in range(6):
             notas.append(notascero)
@@ -117,14 +118,31 @@ class Seccion:
                     print("Ingresar notas del alumno "+info_alumnos[0][contador].nombre+": ")    
                     for k in range(6):
                         if k<4:
-                            notas[k]=int(input(f'PC{str(k+1)}: '))
-                            info_alumnos[1][contador].append(notas[k])
+                            while(validacion_nota==0):
+                                notas[k]=int(input(f'PC{str(k+1)}: '))
+                                if notas[k] in range(21):
+                                    info_alumnos[1][contador].append(notas[k])
+                                    validacion_nota=1
+                                else:
+                                    print("Nota no valida, debe ingresar notas de 0 a 20")
+                            validacion_nota=0
                         elif k==4:
-                            notas[k]=int(input("Parcial: "))
-                            info_alumnos[1][contador].append(notas[k])
+                            while(validacion_nota==0):
+                                notas[k]=int(input("Parcial: "))
+                                if notas[k] in range(21):
+                                    info_alumnos[1][contador].append(notas[k])
+                                    validacion_nota=1
+                                else:
+                                    print("Nota no valida, debe ingresar notas de 0 a 20")
+                            validacion_nota=0
                         else:
-                            notas[k]=int(input("Final: "))
-                            info_alumnos[1][contador].append(notas[k])
+                            while(validacion_nota==0):
+                                notas[k]=int(input("Final: "))
+                                if notas[k] in range(21):
+                                    info_alumnos[1][contador].append(notas[k])
+                                    validacion_nota=1
+                                else:
+                                    print("Nota no valida, debe ingresar notas de 0 a 20")
                     print(notas)
                     contador=len(info_alumnos[0])
                 else:
