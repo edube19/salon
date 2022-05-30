@@ -4,7 +4,7 @@
 from asyncio.windows_events import NULL
 from distutils.log import info
 from pickle import APPEND
-lista_secciones=[[]]
+lista_secciones=[]
 
 def crear_seccion(lista_secciones):
     print("-----Creando secciones-----")
