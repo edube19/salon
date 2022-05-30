@@ -3,8 +3,92 @@
 #arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
 from asyncio.windows_events import NULL
 from distutils.log import info
-lista_secciones=[]
+from pickle import APPEND
+lista_secciones=[[]]
 
+def crear_seccion(lista_secciones):
+    print("-----Creando secciones-----")
+    lista_nombre_secciones=[]
+    cond=1
+    while(cond!=0):
+        #while True:
+        nombre_seccion=input("Ingrese el nombre/número de la seccion: ")    
+        if (nombre_seccion in lista_nombre_secciones):
+            print("Ya existe esa sección")
+        else:
+            lista_nombre_secciones.append(nombre_seccion)
+            curso=input("Ingrese el curso de la seccion: ")
+            profesor=input("Ingrese el profesor de la seccion: ")
+            lista_secciones.append(Seccion(nombre_seccion,curso,profesor))
+            print("Seccion creada")
+        cond=int(input("Desea agregar otra seccion (1→SI / 0→NO):"))
+            
+def buscar_seccion(lista_secciones):
+    condicion=1
+    contador=0
+    while(condicion!=0):
+        nombre_seccion=input("Ponga el nombre/número de la seccion a buscar: ")
+        for x in range(len(lista_secciones)):
+            if nombre_seccion == lista_secciones[x].nseccion:
+                print("La seccion "+nombre_seccion+" si existe")
+                condicion=int(input("Desea buscar otra seccion (1→SI / 0→NO):"))
+                break
+            else:
+                contador=x
+                if ((contador+1)==len(lista_secciones)):
+                    print("La seccion no existe")
+                    condicion=int(input("Desea buscar otra seccion (1→SI / 0→NO):"))
+        
+def ver_secciones(lista_secciones):
+    for lista in lista_secciones:
+        print("")
+        print(lista)   
+        print("")
+
+"""def crear_seccion(lista_secciones):
+    print("-----Creando secciones-----")
+    cond=1
+    while(cond!=0):
+        nombre_seccion=input("Ingrese el nombre/número de la seccion: ")
+        for x in range(len(lista_secciones)):
+            if(lista_secciones[x].nseccion== nombre_seccion):
+                print("La seccion si existe")
+                print(nombre_seccion)
+                cond=int(input("Desea ingresar otra seccion (1→SI / 0→NO):"))
+                break
+            else:
+                curso=input("Ingrese el curso de la seccion"+nombre_seccion+" : ")
+                profesor=input("Ingrese el profesor de la seccion"+nombre_seccion+" : ")
+                lista_secciones.append(Seccion(nombre_seccion,curso,profesor))
+                print("Seccion creada")
+                cond=int(input("Desea ingresar otra seccion (1→SI / 0→NO):"))
+                break    
+            if (nombre_seccion in lista_secciones.nseccion):
+                print("Ya existe esa sección")
+            else:
+                curso=input("Ingrese el curso de la seccion: ")
+                profesor=input("Ingrese el profesor de la seccion: ")
+                lista_secciones.append(Seccion(nombre_seccion,curso,profesor))
+                print("Seccion creada")
+                break
+
+def buscar_seccion(lista_secciones):
+    cond=1
+    while(cond!=0):
+        seccion=input("Ponga el nombre/número de la seccion a buscar: ")
+        for x in range(len(lista_secciones)):
+            if(lista_secciones[x].nseccion==seccion):
+                print("La seccion si existe")
+                print(seccion)
+                cond=int(input("Desea buscar otra seccion (1→SI / 0→NO):"))
+                break
+        if((x+1)==len(lista_secciones)):
+            print("La seccion no existe")
+            cond=int(input("Desea agregar otra seccion (1→SI / 0→NO):"))
+
+def ver_secciones(lista_secciones):
+    for x in range(len(lista_secciones)):
+            print("Seccion n° "+str(x+1)+" : "+lista_secciones[x].nseccion)"""
 
 class Seccion:
     #[[alumnos],[notas],[nota final],[identificador_alumno]]
@@ -20,36 +104,8 @@ class Seccion:
         self.notas_min_pc=[]
         
         #self.info_alumnos=info_alumnos
-
-    def crear_seccion(lista_secciones):
-        print("-----Creando secciones-----")
-        cond=0
-        while(cond==0):
-            while True:
-                nseccion=input("Ingrese el nombre/número de la seccion: ")    
-                if (nseccion in lista_secciones):
-                    print("Ya existe esa sección")
-                else:
-                    curso=input("Ingrese el curso de la seccion: ")
-                    profesor=input("Ingrese el profesor de la seccion: ")
-                    lista_secciones.append(Seccion(nseccion,curso,profesor))
-                    print("Seccion creada")
-                    break
-            cond=int(input("Desea agregar otra seccion (1→SI / 0→NO):"))
-
-    def buscar_seccion(lista_secciones):
-        seccion=input("Ponga el nombre/número de la seccion a quedar: ")
-        if seccion in lista_secciones:
-            print("La seccion si existe")
-            print(seccion)
-        else:
-            print("La seccion no existe")
-
-    def ver_secciones(lista_secciones):
-        for lista in lista_secciones:
-            print("")
-            print(lista)   
-            print("")
+    
+    
 
     def agregar_alumno(self,info_alumnos,curso,nseccion):
         print("Seccion ",nseccion)

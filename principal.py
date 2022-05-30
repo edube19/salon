@@ -3,10 +3,19 @@ from uuid import NAMESPACE_URL
 from seccion import *
 lista_secciones=[]
 
+crear_seccion(lista_secciones)
+
+buscar_seccion(lista_secciones)
+
+ver_secciones(lista_secciones)
+
+"""
 
 seccion1=Seccion(1,'Matemática','Echendia')
 seccion2=Seccion(2,'Fisica','Tafur')
 print("Ingrese los alumnos: \n")
+
+
 a=seccion1.info_alumnos
 n=1
 seccion1.agregar_alumno(a,'Matemática',n)
@@ -55,4 +64,4 @@ seccion2.ver_notas_seccion(seccion2.info_alumnos,2)
 
 seccion2.promedio_alumnos(seccion2.info_alumnos,seccion2.notas_min_pc)
 seccion2.mayor_nota(seccion2.info_alumnos)
-seccion2.menor_nota(seccion2.info_alumnos)
+seccion2.menor_nota(seccion2.info_alumnos) """
