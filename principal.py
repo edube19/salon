@@ -7,22 +7,56 @@ crear_seccion(lista_secciones)
 
 buscar_seccion(lista_secciones)
 
-ver_secciones(lista_secciones)
-
-
+cantidad_secciones=ver_secciones(lista_secciones)
 
 #seccion1=Seccion(1,'Matemática','Echendia')
 #seccion2=Seccion(2,'Fisica','Tafur')
+print("Cantidad de secciones",cantidad_secciones)
 
-
-print("Ingrese los alumnos: \n")
 #agregar_alumno(self,info_alumnos,curso,nseccion):
-info_alumnos1=lista_secciones[0].info_alumnos
-curso1=lista_secciones[0].curso
-nombre_seccion1=lista_secciones[0].nseccion
+continuar_secciones=1
+#for x in range(cantidad_secciones):
+    #while (continuar_secciones!=0):
+condicion=1
+contador=0
+while(condicion!=0):
+    nombre_seccion=input("Ponga el nombre/número de la seccion a poner notas: ") 
+    for x in range(cantidad_secciones): 
+        if nombre_seccion == lista_secciones[x].nseccion:  
+            print("Ingrese los alumnos de la seccion "+lista_secciones[x].nseccion+": \n")
+            info_alumnos_listado=lista_secciones[x].info_alumnos
+            curso_listado=lista_secciones[x].curso
+            nombre_seccion_listado=lista_secciones[x].nseccion
+            notas_min_pc_listado=lista_secciones[x].notas_min_pc
 
-lista_secciones[0].agregar_alumno(info_alumnos1,curso1,nombre_seccion1)
-lista_secciones[0].ver_lista(info_alumnos1,nombre_seccion1)
+            lista_secciones[x].agregar_alumno(info_alumnos_listado,curso_listado,nombre_seccion_listado)
+            lista_secciones[x].ver_lista(info_alumnos_listado,nombre_seccion_listado)
+
+            lista_secciones[x].inicializar_notas(1,info_alumnos_listado)#1 para inicializar la columna de notas
+            lista_secciones[x].inicializar_notas(2,info_alumnos_listado)#2 para inicializar la columna de nota final
+            lista_secciones[x].inicializar_notas_min_pc(notas_min_pc_listado,info_alumnos_listado)#inicializa la nota mas baja de todas
+            c=1
+            while (c!=0):
+                alumno=input("Ingrese el nombre del alumno a asignar notas: ")
+                lista_secciones[x].recibir_notas(info_alumnos_listado,alumno)
+                condicion_alumno=int(input(" ¿Ingresar otro? (1→SI / 0→NO) "))
+                c=condicion_alumno
+
+            lista_secciones[x].ver_notas_seccion(info_alumnos_listado,nombre_seccion_listado)
+            lista_secciones[x].promedio_alumnos(info_alumnos_listado,notas_min_pc_listado)
+            lista_secciones[x].mayor_nota(info_alumnos_listado)
+            lista_secciones[x].menor_nota(info_alumnos_listado)
+            break
+        else:
+            contador=x
+            if ((contador+1)==len(lista_secciones)):
+                print("La seccion no existe")
+                condicion=int(input("Desea poner datos seccion (1→SI / 0→NO):"))
+            #continuar_secciones=int(input(" ¿Ingresar datos de otra seccion? (1→SI / 0→NO) "))
+        
+
+
+
 """n=1
 seccion1.agregar_alumno(a,'Matemática',n)
 seccion1.ver_lista(a,n)
@@ -41,8 +75,6 @@ seccion2.inicializar_notas_min_pc(seccion2.notas_min_pc,seccion2.info_alumnos)#i
 c=1
 
 
-
-
 print("Seccion 1")
 while (c!=0):
     alumno=input("Ingrese el nombre del alumno a asignar notas: ")
@@ -50,9 +82,7 @@ while (c!=0):
     condicion=int(input(" ¿Ingresar otro? (1→SI / 0→NO) "))
     c=condicion
 
-
 seccion1.ver_notas_seccion(seccion1.info_alumnos,1)
-
 seccion1.promedio_alumnos(seccion1.info_alumnos,seccion1.notas_min_pc)
 seccion1.mayor_nota(seccion1.info_alumnos)
 seccion1.menor_nota(seccion1.info_alumnos)

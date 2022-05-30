@@ -42,7 +42,8 @@ def buscar_seccion(lista_secciones):
 def ver_secciones(lista_secciones):
     print("Lista de secciones")
     for x in range(len(lista_secciones)):
-        print("Seccion "+lista_secciones[x].nseccion+"\n")   
+        print("Seccion "+lista_secciones[x].nseccion+"\n") 
+    return len(lista_secciones) 
 
 class Seccion:
     #[[alumnos],[notas],[nota final],[identificador_alumno]]
@@ -218,11 +219,9 @@ class Seccion:
             info_alumnos[columna].append(notas)
 
     def inicializar_notas_min_pc(self,notas_min_pc,info_alumnos):
-
         for j in range(len(info_alumnos[0])):
                 notas=[]
                 notas_min_pc.append(notas)
-
 
     def promedio_alumnos(self,info_alumnos,notas_min_pc):
         #minimo=min(info_alumnos)
