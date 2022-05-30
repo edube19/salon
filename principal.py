@@ -9,15 +9,21 @@ buscar_seccion(lista_secciones)
 
 ver_secciones(lista_secciones)
 
-"""
 
-seccion1=Seccion(1,'Matemática','Echendia')
-seccion2=Seccion(2,'Fisica','Tafur')
+
+#seccion1=Seccion(1,'Matemática','Echendia')
+#seccion2=Seccion(2,'Fisica','Tafur')
+
+
 print("Ingrese los alumnos: \n")
+#agregar_alumno(self,info_alumnos,curso,nseccion):
+info_alumnos1=lista_secciones[0].info_alumnos
+curso1=lista_secciones[0].curso
+nombre_seccion1=lista_secciones[0].nseccion
 
-
-a=seccion1.info_alumnos
-n=1
+lista_secciones[0].agregar_alumno(info_alumnos1,curso1,nombre_seccion1)
+lista_secciones[0].ver_lista(info_alumnos1,nombre_seccion1)
+"""n=1
 seccion1.agregar_alumno(a,'Matemática',n)
 seccion1.ver_lista(a,n)
 seccion=input("Ingrese la seccion a poner nota → Seccion: ")

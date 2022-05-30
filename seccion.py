@@ -44,68 +44,18 @@ def ver_secciones(lista_secciones):
     for x in range(len(lista_secciones)):
         print("Seccion "+lista_secciones[x].nseccion+"\n")   
 
-"""def crear_seccion(lista_secciones):
-    print("-----Creando secciones-----")
-    cond=1
-    while(cond!=0):
-        nombre_seccion=input("Ingrese el nombre/número de la seccion: ")
-        for x in range(len(lista_secciones)):
-            if(lista_secciones[x].nseccion== nombre_seccion):
-                print("La seccion si existe")
-                print(nombre_seccion)
-                cond=int(input("Desea ingresar otra seccion (1→SI / 0→NO):"))
-                break
-            else:
-                curso=input("Ingrese el curso de la seccion"+nombre_seccion+" : ")
-                profesor=input("Ingrese el profesor de la seccion"+nombre_seccion+" : ")
-                lista_secciones.append(Seccion(nombre_seccion,curso,profesor))
-                print("Seccion creada")
-                cond=int(input("Desea ingresar otra seccion (1→SI / 0→NO):"))
-                break    
-            if (nombre_seccion in lista_secciones.nseccion):
-                print("Ya existe esa sección")
-            else:
-                curso=input("Ingrese el curso de la seccion: ")
-                profesor=input("Ingrese el profesor de la seccion: ")
-                lista_secciones.append(Seccion(nombre_seccion,curso,profesor))
-                print("Seccion creada")
-                break
-
-def buscar_seccion(lista_secciones):
-    cond=1
-    while(cond!=0):
-        seccion=input("Ponga el nombre/número de la seccion a buscar: ")
-        for x in range(len(lista_secciones)):
-            if(lista_secciones[x].nseccion==seccion):
-                print("La seccion si existe")
-                print(seccion)
-                cond=int(input("Desea buscar otra seccion (1→SI / 0→NO):"))
-                break
-        if((x+1)==len(lista_secciones)):
-            print("La seccion no existe")
-            cond=int(input("Desea agregar otra seccion (1→SI / 0→NO):"))
-
-def ver_secciones(lista_secciones):
-    for x in range(len(lista_secciones)):
-            print("Seccion n° "+str(x+1)+" : "+lista_secciones[x].nseccion)"""
-
 class Seccion:
     #[[alumnos],[notas],[nota final],[identificador_alumno]]
     notas_max_min=[[]]#[alumno][1]→ nota menor,[alumno][0]→ nota mayor .Lista de la mejor/menor nota de cada alumno
     notas_min_pc=[]#la pc mas baja de cada alumno
     
-
     def __init__(self,nseccion,curso,profesor):
         self.nseccion=nseccion
         self.curso=curso
         self.profesor=profesor
         self.info_alumnos=[[],[],[]]#para que pertenesca a este
         self.notas_min_pc=[]
-        
-        #self.info_alumnos=info_alumnos
     
-    
-
     def agregar_alumno(self,info_alumnos,curso,nseccion):
         print("Seccion ",nseccion)
         lista_nombres=[]#guarda los nombres de todos los alumnos
