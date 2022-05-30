@@ -40,10 +40,9 @@ def buscar_seccion(lista_secciones):
                     condicion=int(input("Desea buscar otra seccion (1→SI / 0→NO):"))
         
 def ver_secciones(lista_secciones):
-    for lista in lista_secciones:
-        print("")
-        print(lista)   
-        print("")
+    print("Lista de secciones")
+    for x in range(len(lista_secciones)):
+        print("Seccion "+lista_secciones[x].nseccion+"\n")   
 
 """def crear_seccion(lista_secciones):
     print("-----Creando secciones-----")
